@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.16)
 # and the targets that do not specify a standard.
 # If not set, the latest supported standard for your compiler is used
 # You can later set fine-grained standards for each target using `target_compile_features`
-# set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 17)
 
 # Add project_options v0.12.3
 # https://github.com/cpp-best-practices/project_options
@@ -18,7 +18,7 @@ include(${_project_options_SOURCE_DIR}/Index.cmake)
 # run_vcpkg()
 
 # Set the project name and language
-project(myproject LANGUAGES CXX)
+project(TP2 LANGUAGES CXX)
 
 # Initialize project_options variable related to this project
 # This overwrites `project_options` and sets `project_warnings`
@@ -34,7 +34,7 @@ project_options(
       # ENABLE_INCLUDE_WHAT_YOU_USE
       # ENABLE_PCH
       # PCH_HEADERS
-      # ENABLE_DOXYGEN
+      ENABLE_DOXYGEN
       # ENABLE_USER_LINKER
       # ENABLE_BUILD_WITH_TIME_TRACE
       # ENABLE_UNITY
@@ -64,3 +64,8 @@ if(ENABLE_FUZZING)
   message("Building Fuzz Tests, using fuzzing sanitizer https://www.llvm.org/docs/LibFuzzer.html")
   add_subdirectory(fuzz_test)
 endif()
+
+set(FETCHCONTENT_QUIET OFF)
+
+# adding protos directory
+add_subdirectory(protos)
